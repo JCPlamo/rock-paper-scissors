@@ -1,30 +1,27 @@
-//Global Variables
-let humanScore = 0;
-let computerScore = 0;
-
 //function to get a random number from 0 to max
 //when max = 3, the range will be 0-2, giving 3 possible numbers
 //used for the computers choice for rock (0), paper (1), or scissors (2)
-function getRandomInt(max) {
+function getRandomInt(max) 
+{
     return Math.floor(Math.random() * max);
-  }
+}
 
 function getComputerChoice() 
 {
     num = getRandomInt(3);
     if (num == 0)
     {
-        console.log("CPU: Rock");
+        console.log("CPU chose rock");
         return "rock";
     }
     else if (num == 1)
     {
-        console.log("CPU: Paper");
+        console.log("CPU chose Paper");
         return "paper";
     }
     else if (num == 2)
     {
-        console.log("CPU: Scissors");
+        console.log("CPU chose scissors");
         return "scissors";
     }
 }
@@ -62,19 +59,54 @@ function playRound(humanChoice, computerChoice)
     }
     else if ((humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "paper" && computerChoice == "rock") ||(humanChoice == "scissors" && computerChoice == "paper"))
     {
-        console.log("You win!. " + humanChoice + " beats " + computerChoice + "!");
-        humanScore++;
+        console.log("Round won!. " + humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1) + " beats " + computerChoice + "!"); //.charAt(0).toUpperCase() capitalizes first letter, .slice(1) adds the rest of the word
+        return 1;
     }
     else
     {
-        console.log("You lose!. " + computerChoice + " beats " + humanChoice + "!");
-        computerScore++;
+        console.log("Round lost!. " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice + "!");
+        return 2;
     }
-    console.log("Your score: " + humanScore + " | CPU score: " + computerScore);
-
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame(rounds)
+{
+    //score Variables
+    let humanScore = 0;
+    let computerScore = 0;
 
-playRound(humanSelection, computerSelection)
+    //loop to keep the game going x amount of rounds
+    for (let i = 0; i < rounds; i++)
+    {
+        //choice Variables
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+
+        let round = playRound(humanSelection, computerSelection)
+        if (round == 1) //1 = player wins
+        {
+            humanScore++;
+        }
+        if (round == 2) //2 = cpu wins
+        {
+            computerScore++;
+        }
+        console.log("Your score: " + humanScore + " | CPU score: " + computerScore);
+    }
+    
+    //if statements to determine the winner
+    if (humanScore == computerScore)
+    {
+        console.log("You both tied!");
+    }
+    else if (humanScore > computerScore)
+    {
+        console.log("You won the game!");
+    }
+    else
+    {
+        console.log("You lost the game!");
+    }
+}
+
+playGame(5)
