@@ -1,3 +1,10 @@
+//Global Variables
+let humanScore = 0;
+let computerScore = 0;
+
+
+//function to get a random number from 0 to max
+//used for the computers choice (0-2) for rock (0), paper (1), or scissors (2)
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -7,15 +14,15 @@ function getComputerChoice(num)
     let choice = num;
     if (choice == 0)
     {
-        return "Rock";
+        return "CPU: Rock";
     }
     else if (choice == 1)
     {
-        return "Paper";
+        return "CPU: Paper";
     }
     else if (choice == 2)
     {
-        return "Scissors";
+        return "CPU: Scissors";
     }
 }
 
