@@ -29,8 +29,8 @@ function getComputerChoice()
 function getHumanChoice()
 {
     let choice = prompt("Will you choose rock, paper, or scissors? ");
-    if (choice.toLowerCase() == "rock")
-    {
+    if (choice.toLowerCase() == "rock")  //choice.toLowerCase() ensures that all letters in choice will be lowercase no matter the input
+    {                                    //this ensures that the player can input any variation of the choices (i.e. rOcK or pAPER) and it will still be readable
         console.log("You chose rock");
         return "rock";
     }
@@ -57,9 +57,11 @@ function playRound(humanChoice, computerChoice)
     {
         console.log("TIE. You both chose " + humanChoice + ".")
     }
-    else if ((humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "paper" && computerChoice == "rock") ||(humanChoice == "scissors" && computerChoice == "paper"))
+    else if ((humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "paper" && computerChoice == "rock") ||
+             (humanChoice == "scissors" && computerChoice == "paper"))
     {
-        console.log("Round won!. " + humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1) + " beats " + computerChoice + "!"); //.charAt(0).toUpperCase() capitalizes first letter, .slice(1) adds the rest of the word
+        //.charAt(0).toUpperCase() capitalizes first letter, .slice(1) adds the rest of the word
+        console.log("Round won!. " + humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1) + " beats " + computerChoice + "!");
         return 1;
     }
     else
@@ -109,4 +111,5 @@ function playGame(rounds)
     }
 }
 
+//calls the playGame() function with 5 being the number of rounds
 playGame(5)
