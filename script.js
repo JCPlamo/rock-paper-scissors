@@ -55,61 +55,80 @@ function playRound(humanChoice, computerChoice)
 {
     if (humanChoice == computerChoice)
     {
-        console.log("TIE. You both chose " + humanChoice + ".")
+        display.textContent = "TIE. You both chose " + humanChoice + ".";
     }
     else if ((humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "paper" && computerChoice == "rock") ||
              (humanChoice == "scissors" && computerChoice == "paper"))
     {
         //.charAt(0).toUpperCase() capitalizes first letter, .slice(1) adds the rest of the word
-        console.log("Round won!. " + humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1) + " beats " + computerChoice + "!");
+        display.textContent = "Round won! " + humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1) + " beats " + computerChoice + "!";
         return 1;
     }
     else
     {
-        console.log("Round lost!. " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice + "!");
+        display.textContent = "Round lost! " + computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1) + " beats " + humanChoice + "!";
         return 2;
     }
 }
 
-function playGame(rounds)
-{
-    //score Variables
-    let humanScore = 0;
-    let computerScore = 0;
+// function playGame(rounds)
+// {
+//     //score Variables
+//     let humanScore = 0;
+//     let computerScore = 0;
 
-    //loop to keep the game going x amount of rounds
-    for (let i = 0; i < rounds; i++)
-    {
-        //choice Variables
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
+//     //loop to keep the game going x amount of rounds
+//     for (let i = 0; i < rounds; i++)
+//     {
+//         //choice Variables
+//         const humanSelection = getHumanChoice();
+//         const computerSelection = getComputerChoice();
 
-        let round = playRound(humanSelection, computerSelection)
-        if (round == 1) //1 = player wins
-        {
-            humanScore++;
-        }
-        if (round == 2) //2 = cpu wins
-        {
-            computerScore++;
-        }
-        console.log("Your score: " + humanScore + " | CPU score: " + computerScore);
-    }
+//         let round = playRound(humanSelection, computerSelection)
+//         if (round == 1) //1 = player wins
+//         {
+//             humanScore++;
+//         }
+//         if (round == 2) //2 = cpu wins
+//         {
+//             computerScore++;
+//         }
+//         console.log("Your score: " + humanScore + " | CPU score: " + computerScore);
+//     }
     
-    //if statements to determine the winner
-    if (humanScore == computerScore)
-    {
-        console.log("You both tied!");
-    }
-    else if (humanScore > computerScore)
-    {
-        console.log("You won the game!");
-    }
-    else
-    {
-        console.log("You lost the game!");
-    }
-}
+//     //if statements to determine the winner
+//     if (humanScore == computerScore)
+//     {
+//         console.log("You both tied!");
+//     }
+//     else if (humanScore > computerScore)
+//     {
+//         console.log("You won the game!");
+//     }
+//     else
+//     {
+//         console.log("You lost the game!");
+//     }
+// }
 
 //calls the playGame() function with 5 being the number of rounds
-playGame(5)
+//playGame(5)
+
+
+const btnRock = display.querySelector("#btnRock");
+btnRock.addEventListener("click", function() {
+    const computerChoice = getComputerChoice();
+    playRound("rock", computerChoice);
+});
+
+const btnPaper = display.querySelector("#btnPaper");
+btnPaper.addEventListener("click", function() {
+    const computerChoice = getComputerChoice();
+    playRound("paper", computerChoice);
+});
+
+const btnScissors = display.querySelector("#btnScissors");
+btnScissors.addEventListener("click", function() {
+    const computerChoice = getComputerChoice();
+    playRound("scissors", computerChoice);
+});
