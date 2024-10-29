@@ -13,6 +13,12 @@ function appendToDisplay(message) {
     display.appendChild(newParagraph);
 }
 
+function roundHeader(message) {
+    const newHeader = document.createElement("h2");
+    newHeader.textContent = message;
+    display.appendChild(newHeader);
+}
+
 //Function to update scores in the results div
 function updateScores() {
     results.textContent = "Your score: " + humanScore + " | CPU score: " + computerScore;
@@ -51,7 +57,7 @@ function playRound(humanChoice, computerChoice)
     }
 
     // Update the display with round details
-    appendToDisplay("Round " + roundNum + ":")
+    roundHeader("Round " + roundNum + ":")
     appendToDisplay("You chose: " + humanChoice);
     appendToDisplay("CPU chose: " + computerChoice);
     appendToDisplay(roundResult);
