@@ -30,23 +30,6 @@ function getComputerChoice()
     return num === 0 ? "rock" : num === 1 ? "paper" : "scissors";
 }
 
-// function getHumanChoice()
-// {
-//     let choice = prompt("Will you choose rock, paper, or scissors? ");
-//     if (choice.toLowerCase() == "rock")  //choice.toLowerCase() ensures that all letters in choice will be lowercase no matter the input
-//     {                                    //this ensures that the player can input any variation of the choices (i.e. rOcK or pAPER) and it will still be readable
-//         return "rock";
-//     }
-//     else if (choice.toLowerCase() == "paper")
-//     {
-//         return "paper";
-//     }
-//     else if (choice.toLowerCase() == "scissors")
-//     {
-//         return "scissors";
-//     }
-// }
-
 function playRound(humanChoice, computerChoice)
 {
     let roundResult = "";
@@ -105,49 +88,6 @@ function displayFinalResults()
     btnPaper.disabled = true;
     btnScissors.disabled = true;
 }
-
-// function playGame(rounds)
-// {
-//     //score Variables
-//     let humanScore = 0;
-//     let computerScore = 0;
-
-//     //loop to keep the game going x amount of rounds
-//     for (let i = 0; i < rounds; i++)
-//     {
-//         //choice Variables
-//         const humanSelection = getHumanChoice();
-//         const computerSelection = getComputerChoice();
-
-//         let round = playRound(humanSelection, computerSelection)
-//         if (round == 1) //1 = player wins
-//         {
-//             humanScore++;
-//         }
-//         if (round == 2) //2 = cpu wins
-//         {
-//             computerScore++;
-//         }
-//         console.log("Your score: " + humanScore + " | CPU score: " + computerScore);
-//     }
-    
-//     //if statements to determine the winner
-//     if (humanScore == computerScore)
-//     {
-//         console.log("You both tied!");
-//     }
-//     else if (humanScore > computerScore)
-//     {
-//         console.log("You won the game!");
-//     }
-//     else
-//     {
-//         console.log("You lost the game!");
-//     }
-// }
-
-//calls the playGame() function with 5 being the number of rounds
-//playGame(5)
 
 const display = document.getElementById("display");
 const results = document.getElementById("results");
