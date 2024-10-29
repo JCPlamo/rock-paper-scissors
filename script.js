@@ -6,13 +6,14 @@ let computerScore = 0;
 let roundNum = 1;
 const maxRounds = 6;
 
-// Function to create a new paragraph and append it to the display
+//Function to create a new paragraph and append it to the display
 function appendToDisplay(message) {
     const newParagraph = document.createElement("p");
     newParagraph.textContent = message;
     display.appendChild(newParagraph);
 }
 
+//Function to create a new header and append it to the display
 function roundHeader(message) {
     const newHeader = document.createElement("h2");
     newHeader.textContent = message;
@@ -24,7 +25,7 @@ function updateScores() {
     results.textContent = "Your score: " + humanScore + " | CPU score: " + computerScore;
 }
 
-//function to get a random number from 0 to max
+//Function to get a random number from 0 to max
 function getRandomInt(max) 
 {
     return Math.floor(Math.random() * max);
@@ -56,12 +57,12 @@ function playRound(humanChoice, computerChoice)
         computerScore++;
     }
 
-    // Update the display with round details
+    //Update the display with round details
     roundHeader("Round " + roundNum + ":")
     appendToDisplay("You chose: " + humanChoice);
     appendToDisplay("CPU chose: " + computerChoice);
     appendToDisplay(roundResult);
-    updateScores(); // Update the scores
+    updateScores();
 
     roundNum++;
     if (roundNum === maxRounds)
@@ -95,7 +96,10 @@ function displayFinalResults()
     btnScissors.disabled = true;
 }
 
+///Reference to the display area where game messages will be shown
 const display = document.getElementById("display");
+
+//Reference to the results area where scores will be displayed
 const results = document.getElementById("results");
 
 //Button event listeners
